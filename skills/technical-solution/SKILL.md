@@ -1,12 +1,12 @@
 ---
 name: technical-solution
-version: 1.0.0
+version: 2.0.0
 description: 基于已确认需求形成可审阅的技术方案与取舍。
 phases: [solution]
 methodSources:
   - id: superpowers:brainstorming
     version: 6.2.0
-    source: configured:superpowers
+    source: bundled:superpowers
 ---
 
 # 技术方案

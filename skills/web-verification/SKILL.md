@@ -1,12 +1,12 @@
 ---
 name: web-verification
-version: 1.0.0
+version: 2.0.0
 description: 对已实施的 TypeScript Web 变更执行工程验证并记录证据。
 phases: [verify]
 methodSources:
   - id: superpowers:test-driven-development
     version: 6.2.0
-    source: configured:superpowers
+    source: bundled:superpowers
 ---
 
 # Web 工程验证

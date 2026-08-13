@@ -1,12 +1,12 @@
 ---
 name: requirements-clarification
-version: 1.0.0
+version: 2.0.0
 description: 将来源资料整理为可审阅、可验证的结构化需求。
 phases: [clarify]
 methodSources:
   - id: superpowers:brainstorming
     version: 6.2.0
-    source: configured:superpowers
+    source: bundled:superpowers
 ---
 
 # 需求澄清

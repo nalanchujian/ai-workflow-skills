@@ -1,12 +1,12 @@
 ---
 name: implementation-planning
-version: 1.0.0
+version: 2.0.0
 description: 将已确认方案分解为可执行、可验证的实施计划。
 phases: [plan]
 methodSources:
   - id: superpowers:writing-plans
     version: 6.2.0
-    source: configured:superpowers
+    source: bundled:superpowers
 ---
 
 # 实施计划

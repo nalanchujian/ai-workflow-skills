@@ -1,12 +1,12 @@
 ---
 name: typescript-web-implementation
-version: 1.0.0
+version: 2.0.0
 description: 在现有 TypeScript Web 项目中受控实施已批准的计划。
 phases: [implement]
 methodSources:
   - id: superpowers:test-driven-development
     version: 6.2.0
-    source: configured:superpowers
+    source: bundled:superpowers
 ---
 
 # TypeScript Web 实现

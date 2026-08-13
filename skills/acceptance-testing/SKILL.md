@@ -1,12 +1,12 @@
 ---
 name: acceptance-testing
-version: 1.0.0
+version: 2.0.0
 description: 基于验收标准评估交付结果并形成测试结论。
 phases: [test]
 methodSources:
   - id: superpowers:test-driven-development
     version: 6.2.0
-    source: configured:superpowers
+    source: bundled:superpowers
 ---
 
 # 验收测试

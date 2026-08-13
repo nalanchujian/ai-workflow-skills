@@ -1,0 +1,10 @@
+id: superpowers
+version: 6.2.0
+upstream:
+  url: https://github.com/obra/superpowers.git
+  revision: 3dcbd5c4b48e02263fbf4a3c01e3fe4f81d584d9
+  license: MIT
+methods:
+  - brainstorming
+  - writing-plans
+  - test-driven-development
