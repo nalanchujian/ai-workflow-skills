@@ -2,7 +2,7 @@
 
 `AI Workflow Skills` 是 [AI Workflow](https://www.npmjs.com/package/@nalanchujian/ai-workflow) 的公开团队技能仓库。
 
-它提供 `standard-web-feature@2.0.0`：面向 TypeScript Web 业务需求的固定七阶段模板。模板将 `clarify`、`solution`、`plan`、`implement`、`verify`、`test` 六个可执行阶段锁定到明确的技能版本；`intake` 由 `aiw task init` 完成，不配置技能。
+它提供 `standard-web-feature@3.0.0`：面向 TypeScript Web 业务需求的固定七阶段模板。模板将 `clarify`、`solution`、`plan`、`implement`、`verify`、`test` 六个可执行阶段锁定到明确的技能版本；`intake` 由 `aiw task init` 完成，不配置技能。计划阶段会输出完整计划、实施摘要与机器可读工作单元；AIW 在计划审批后据此自动生成复杂需求的实施节点。
 
 ## 如何使用
 

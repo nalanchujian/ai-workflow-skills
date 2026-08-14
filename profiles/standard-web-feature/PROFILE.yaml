@@ -1,10 +1,10 @@
 name: standard-web-feature
-version: 2.1.0
+version: 3.0.0
 description: 适用于 TypeScript Web 业务需求的标准七阶段方法。
 skills:
   clarify: requirements-clarification@2.0.0
   solution: technical-solution@2.0.0
-  plan: implementation-planning@2.1.0
+  plan: implementation-planning@3.0.0
   implement: typescript-web-implementation@2.0.0
   verify: web-verification@2.0.0
   test: acceptance-testing@2.0.0
