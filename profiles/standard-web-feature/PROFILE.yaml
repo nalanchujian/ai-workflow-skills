@@ -1,10 +1,10 @@
 name: standard-web-feature
-version: 5.0.0
+version: 6.0.0
 description: 适用于 TypeScript Web 业务需求的标准七阶段方法。
 skills:
-  clarify: requirements-clarification@4.0.0
+  clarify: requirements-clarification@5.0.0
   solution: technical-solution@3.0.0
-  plan: implementation-planning@4.0.0
+  plan: implementation-planning@5.0.0
   implement: typescript-web-implementation@2.0.0
   verify: web-verification@2.0.0
   test: acceptance-testing@3.0.0

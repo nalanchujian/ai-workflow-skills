@@ -1,6 +1,6 @@
 ---
 name: implementation-planning
-version: 4.0.0
+version: 5.0.0
 description: 将已确认方案分解为可执行、可验证的实施计划。
 phases: [plan]
 methodSources:
@@ -50,15 +50,25 @@ methodSources:
        blockedBy: [DEC-API-01]
        dependsOn: []
        requiresApproval: false
+   acceptanceCoverage:
+     - acceptanceId: AC-01
+       disposition: implement
+       workUnitIds: [page]
+     - acceptanceId: AC-02
+       disposition: waiting_external
+       decisionId: DEC-API-01
+       workUnitIds: [page]
    ```
-7. 将不能验证的外部前提映射为 `blockedBy` 决策 ID，而不是隐式纳入实现范围。决策仍为 `proposed` 或 `waiting_external` 时，对应工作单元必须保留 `blockedBy`；AIW 会让该单元等待决策而不阻塞无关单元。
-8. 已拆期的决策不得生成当前版本的可执行工作单元；已豁免的决策必须在计划中说明风险、责任人和对应验收状态。
+7. `acceptanceCoverage` 必须为 `artifacts/acceptance.yaml` 中**每一个** AC 声明唯一处理方式。`implement` 必须关联真实实施工作单元，且该单元的 `acceptanceRefs` 包含该 AC；`waiting_external` 必须关联当前 `waiting_external` 决策、被该决策阻塞的工作单元与对应 AC；`deferred` 或 `waived` 必须关联已有说明的同状态决策，不得伪造本期完成。一个只补测试的工作单元不能覆盖尚未实施的页面、接口或导出能力。
+8. 将不能验证的外部前提映射为 `blockedBy` 决策 ID，而不是隐式纳入实现范围。决策仍为 `proposed` 或 `waiting_external` 时，对应工作单元必须保留 `blockedBy`；AIW 会让该单元等待决策而不阻塞无关单元。
+9. 已拆期的决策不得生成当前版本可执行的实施单元；保留为历史声明的单元必须标明 `blockedBy`。已豁免的决策必须在计划中说明风险、责任人和对应验收状态。
 
 ## 验证
 
 - `artifacts/implementation-plan.md`、`artifacts/implementation-context.md` 与 `artifacts/work-breakdown.yaml` 均存在。
 - `implementation-context.md` 只包含当前实施所需信息，不能超过约 4000 tokens。
 - `work-breakdown.yaml` 中每个工作单元都有目标、路径、验收引用、步骤与验证方式；多单元之间不存在循环依赖。
+- `acceptanceCoverage` 完整覆盖 `acceptance.yaml` 的所有 AC；每个 AC 要么有实施单元，要么有可追溯的等待、拆期或风险豁免决策。
 - 存在且仅存在一个 `allowedPaths` YAML 代码块；范围足以覆盖计划任务，但不使用仓库根目录或无限制通配符。
 - 计划与已确认的验收标准、技术方案不存在冲突。
 - 每个未决外部前提均映射到明确的 `blockedBy`；没有任何工作单元依赖它时，不得虚构阻塞项。
