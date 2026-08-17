@@ -2,7 +2,7 @@
 
 `AI Workflow Skills` 是 [AI Workflow](https://www.npmjs.com/package/@nalanchujian/ai-workflow) 的公开团队技能仓库。
 
-它提供 `standard-web-feature@4.0.0`：面向 TypeScript Web 业务需求的固定七阶段模板。模板将 `clarify`、`solution`、`plan`、`implement`、`verify`、`test` 六个可执行阶段锁定到明确的技能版本；`intake` 由 `aiw task init` 完成，不配置技能。澄清阶段会将无法直接确定的问题整理为包含方案、取舍和 AI 推荐的决策登记；计划阶段把未决事项映射到机器可读工作单元，AIW 在计划审批后自动生成实施节点，并只阻塞受影响单元。
+它提供 `standard-web-feature@5.0.0`：面向 TypeScript Web 业务需求的固定七阶段模板。模板将 `clarify`、`solution`、`plan`、`implement`、`verify`、`test` 六个可执行阶段锁定到明确的技能版本；`intake` 由 `aiw task init` 完成，不配置技能。澄清阶段会将无法直接确定的问题整理为包含方案、取舍、AI 推荐和明确处理结果的决策登记；计划阶段把未决事项映射到机器可读工作单元，AIW 在计划审批后自动生成实施节点，并只阻塞受影响单元。
 
 ## 如何使用
 
@@ -28,4 +28,4 @@ method-sources/ # 随技能包分发并锁定的第三方方法正文
 - 新增兼容的可选产物或步骤：递增 `MINOR`。
 - 修改阶段、方法来源、必需产物或不兼容的执行方式：递增 `MAJOR`。
 
-完整的版本关系、模板升级示例和 Git tag 发布步骤见[工作流版本发布指南](docs/工作流版本发布指南.md)。发布新版本时创建 Git tag。当前 Registry 不支持同一来源多版本并存，维护者应安排在团队旧任务完成后再通知使用者升级。
+完整的版本关系、模板升级示例和 Git tag 发布步骤见[工作流版本发布指南](docs/工作流版本发布指南.md)。发布新版本时创建 Git tag。Registry 按 Git revision 保留同一来源的多个已安装版本；进行中的任务继续使用创建时锁定的版本。
