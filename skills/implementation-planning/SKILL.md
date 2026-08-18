@@ -1,6 +1,6 @@
 ---
 name: implementation-planning
-version: 5.0.0
+version: 6.0.0
 description: 将已确认方案分解为可执行、可验证的实施计划。
 phases: [plan]
 methodSources:
@@ -20,18 +20,10 @@ methodSources:
 
 1. 复用 `superpowers:writing-plans`，按可独立验证的最小任务分解实施顺序。
 2. 按可独立验证的工作单元判断实施规模：只有一个可独立交付单元时保持单实施；涉及多个可独立交付能力、跨模块边界或存在明确依赖时拆分为多个工作单元。不要按代码行数拆分。
-3. 为每项任务标明影响文件、前置条件、实现动作、测试命令和可观察完成条件。
-4. 在 `artifacts/implementation-plan.md` 中固定包含 `## 实施单元`、`## 范围与边界`、`## 验证方式`，并在范围章节用以下固定格式声明全部工作单元的允许变更范围；每个路径必须是相对业务仓库的具体文件、目录或 `/**` 目录通配符，禁止使用仓库根目录、`*` 或无限制通配符：
-
-   ```yaml
-   allowedPaths:
-     - src/features/orders/**
-     - tests/features/orders/**
-   ```
-
-   该 YAML 代码块是计划整体范围说明；每个工作单元自身的变更范围以 `work-breakdown.yaml` 为准。计划的文字说明不得扩大它的范围。随后说明禁止触碰的边界和依赖升级条件。
-5. 生成 `artifacts/implementation-context.md`。它是单工作单元场景的实施专用摘要，最多约 4000 tokens，只保留目标、允许修改、验收项、实施步骤、验证方式、依赖和风险；不要复述完整背景、方案比较或无关功能。
-6. 生成 `artifacts/work-breakdown.yaml`，严格使用以下结构。`units` 至少一个；多单元时 AIW 会在计划审批后自动生成实施子节点。工作单元字段只能是 `id`、`title`、`goal`、`allowedPaths`、`acceptanceRefs`、`steps`、`verification`、`blockedBy`、`dependsOn`、`requiresApproval`；不得使用 `acceptanceIds`、`paths`、`commands` 或 `dependencies`。`dependsOn` 只能引用同文件其他单元 ID；每个单元必须能独立验证。
+3. 为每项任务标明业务目标、前置条件、实现动作、测试命令和可观察完成条件；可以列出预计影响文件以帮助理解，但它们不是执行白名单。
+4. 在 `artifacts/implementation-plan.md` 中固定包含 `## 实施单元`、`## 范围与边界`、`## 验证方式`。范围章节说明本期业务边界、不能假设的外部条件和依赖升级条件；不要用文件路径列表限制实现。为完成当前工作单元，Agent 可以修改必要的业务代码和测试，但不得进行与目标无关的重构、依赖升级或配置变更。
+5. 生成 `artifacts/implementation-context.md`。它是单工作单元场景的实施专用摘要，最多约 4000 tokens，只保留目标、验收项、实施步骤、验证方式、依赖和风险；不要复述完整背景、方案比较或无关功能。
+6. 生成 `artifacts/work-breakdown.yaml`，严格使用以下结构。`units` 至少一个；多单元时 AIW 会在计划审批后自动生成实施子节点。工作单元字段只能是 `id`、`title`、`goal`、`acceptanceRefs`、`steps`、`verification`、`blockedBy`、`dependsOn`、`requiresApproval`；不得使用 `acceptanceIds`、`allowedPaths`、`paths`、`commands` 或 `dependencies`。`dependsOn` 只能引用同文件其他单元 ID；每个单元必须能独立验证。
 
    ```yaml
    schemaVersion: aiw.work-breakdown/v1
@@ -39,8 +31,6 @@ methodSources:
      - id: page
        title: 实现筛选页面
        goal: 支持按 Creator 与 Data type 筛选列表
-       allowedPaths:
-         - src/pages/growth/links/**
        acceptanceRefs: [AC-01, AC-02]
        steps:
          - 增加筛选状态与查询参数映射
@@ -73,8 +63,8 @@ methodSources:
 
 - `artifacts/implementation-plan.md`、`artifacts/implementation-context.md` 与 `artifacts/work-breakdown.yaml` 均存在。
 - `implementation-context.md` 只包含当前实施所需信息，不能超过约 4000 tokens。
-- `work-breakdown.yaml` 中每个工作单元都有目标、路径、验收引用、步骤与验证方式；多单元之间不存在循环依赖。
+- `work-breakdown.yaml` 中每个工作单元都有目标、验收引用、步骤与验证方式；多单元之间不存在循环依赖。
 - `acceptanceCoverage` 完整覆盖 `acceptance.yaml` 的所有 AC；每个 AC 要么有实施单元，要么有可追溯的等待、拆期或风险豁免决策。
-- 存在且仅存在一个 `allowedPaths` YAML 代码块；范围足以覆盖计划任务，但不使用仓库根目录或无限制通配符。
+- 实施计划说明了本期业务边界、外部依赖和验证方式，但不以文件路径白名单限制必要的业务代码和测试修改。
 - 计划与已确认的验收标准、技术方案不存在冲突。
 - 每个未决外部前提均映射到明确的 `blockedBy`；没有任何工作单元依赖它时，不得虚构阻塞项。

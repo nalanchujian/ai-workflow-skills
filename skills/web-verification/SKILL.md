@@ -1,6 +1,6 @@
 ---
 name: web-verification
-version: 2.0.0
+version: 3.0.0
 description: 对已实施的 TypeScript Web 变更执行工程验证并记录证据。
 phases: [verify]
 methodSources:
@@ -26,4 +26,4 @@ methodSources:
 
 - `artifacts/verification.md` 存在，并包含每项执行命令及结果。
 - 通过结论仅基于已记录的成功证据；失败或跳过均可追溯。
-- 不为掩盖失败而修改不在实施计划中的业务范围。
+- 不为掩盖失败而进行与当前工作单元目标无关的代码修改。
