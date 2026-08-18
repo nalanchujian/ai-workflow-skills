@@ -23,9 +23,9 @@ methodSources:
 3. 在 `artifacts/test-report.md` 按以下固定结构输出：
    - `## 测试命令`：逐条列出实际执行的命令；未执行时也必须写明计划命令及未执行原因。
    - `## 测试结果`：逐条给出通过、失败、跳过或阻塞的结论，并记录退出码、关键输出或人工验证证据。
-   - `## 逐项验收`、`## 阻塞缺陷与风险`、`## 建议的下一步`。
+   - `## 逐项验收`、`## 阻塞缺陷与风险`、`## 建议的下一步`。五个章节均为必填；没有内容时明确写“无”。
    可使用“工程检查”表格补充命令、结果和退出码；表格中每一条命令必须有对应结论。
-4. 同时生成 `artifacts/acceptance-results.yaml`，为每一个验收项写入唯一结果。仅有真实命令、浏览器、接口或人工验证证据时可标记 `passed`；无法执行使用 `blocked`，实现错误使用 `failed`，经明确范围决策拆期或豁免才使用 `deferred` 或 `waived`。固定结构如下：
+4. 同时生成 `artifacts/acceptance-results.yaml`，为每一个验收项写入唯一结果。仅有真实命令、浏览器、接口或人工验证证据时可标记 `passed`；无法执行使用 `blocked`，实现错误使用 `failed`，经明确范围决策拆期或豁免才使用 `deferred` 或 `waived`。字段只能是 `id`、`status`、`evidence`，不得使用 `acceptanceId`、`result` 或 `proofs`；它必须与 `acceptance.yaml` 的 AC 一一对应。固定结构如下：
 
    ```yaml
    schemaVersion: aiw.acceptance-results/v1

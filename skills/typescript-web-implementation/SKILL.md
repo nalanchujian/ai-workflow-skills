@@ -20,7 +20,7 @@ methodSources:
 
 1. 复用 `superpowers:test-driven-development`，先为每项行为变更建立失败测试，再做最小实现并运行相关验证。
 2. 遵守项目的依赖版本、代码风格、构建方式和已批准变更范围；不要无关重构、升级依赖或修改凭据与配置。
-3. 在 `artifacts/implementation.md` 记录实际修改、测试命令、结果、未完成事项和任何范围外请求。
+3. 在 `artifacts/implementation.md`（实施子节点则是对应 `artifacts/subtasks/*.md`）固定包含 `## 实际变更`、`## 测试命令`、`## 测试结果`、`## 未完成事项与风险`，记录实际修改、测试命令、结果、未完成事项和任何范围外请求。
 
 ## 验证
 

@@ -20,7 +20,7 @@ methodSources:
 
 1. 复用 `superpowers:test-driven-development` 的验证原则，执行与变更直接相关的类型检查、构建、静态检查和自动化测试。
 2. 对每项失败区分环境问题、已知缺陷和未覆盖风险；不得将未运行检查标记为通过。
-3. 在 `artifacts/verification.md` 记录命令、结果、关键输出摘要、覆盖边界和遗留风险。
+3. 在 `artifacts/verification.md` 固定包含 `## 执行命令`、`## 验证结果`、`## 覆盖边界与风险`，记录命令、结果、关键输出摘要、覆盖边界和遗留风险。
 
 ## 验证
 
