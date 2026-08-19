@@ -2,7 +2,7 @@
 
 `AI Workflow Skills` 是 [AI Workflow](https://www.npmjs.com/package/@nalanchujian/ai-workflow) 的公开团队技能仓库。
 
-它提供 `standard-web-feature@11.1.0`：面向 TypeScript Web 业务需求的交付单元模板。模板将 `clarify`、`solution`、`plan`、`implement` 四个可执行阶段锁定到明确的技能版本；`intake` 由 `aiw task init` 完成，不配置技能。计划获批后，AIW 会把每个业务单元生成独立的 `delivery-<unit-id>` 节点；每个节点在同一次运行中完成代码、工程验证、测试和所属验收项，不再汇总到全局 `verify`、`test` 节点。澄清阶段会将无法直接确定的问题整理为包含方案、取舍、AI 推荐和明确处理结果的决策登记，并生成机器可读验收清单；计划阶段必须为每项验收声明唯一归属的交付单元、等待外部条件、拆期或风险豁免。AIW 会在每次交付运行的结尾下发精确输出回执；交付技能只写入该 revision 的路径，测试结果由 AIW 统一执行和记录。
+它提供 `standard-web-feature@11.2.0`：面向 TypeScript Web 业务需求的交付单元模板。模板将 `clarify`、`solution`、`plan`、`implement` 四个可执行阶段锁定到明确的技能版本；`intake` 由 `aiw task init` 完成，不配置技能。计划获批后，AIW 会把每个业务单元生成独立的 `delivery-<unit-id>` 节点；每个节点在同一次运行中完成代码、工程验证、测试和所属验收项，不再汇总到全局 `verify`、`test` 节点。澄清阶段会将无法直接确定的问题整理为包含方案、取舍、AI 推荐和明确处理结果的决策登记，并生成机器可读验收清单；计划阶段必须为每项验收声明唯一归属的交付单元或等待外部条件。AIW 是任务物理路径的唯一所有者：每次运行下发暂存输出回执，完成全部校验后才发布为正式任务事实。技能只描述所需结果和方法，不得固化任务路径，也不得自行生成测试结果。
 
 ## 如何使用
 
