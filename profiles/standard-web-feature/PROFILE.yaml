@@ -1,10 +1,10 @@
 name: standard-web-feature
-version: 11.2.0
+version: 11.3.0
 description: 适用于 TypeScript Web 业务需求的交付单元工作流。
 aiwCompatibility: ">=4.0.0 <5.0.0"
 artifactContract: aiw.task-output/v1
 skills:
   clarify: requirements-clarification@8.1.0
   solution: technical-solution@3.1.0
-  plan: implementation-planning@7.1.0
-  implement: typescript-web-implementation@4.2.0
+  plan: implementation-planning@7.2.0
+  implement: typescript-web-implementation@4.3.0
