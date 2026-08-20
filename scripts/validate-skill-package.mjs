@@ -8,6 +8,11 @@ const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 const requiredCompatibility = 'aiwCompatibility: ">=4.0.0 <5.0.0"';
 const requiredContract = 'artifactContract: aiw.task-output/v1';
 const forbiddenPath = /(?:^|[\s`])(?:\.aiw\/|artifacts\/|handoffs\/|runs\/)[^\s`)]*/m;
+const forbiddenProtocolPatterns = [
+  { pattern: /\bschemaVersion\b/, label: 'Schema 版本' },
+  { pattern: /```ya?ml\b/i, label: '完整 YAML 示例' },
+  { pattern: /\b(?:acceptance-intent|acceptance-results|test-results|work-breakdown|fact-register|decision-register)\.ya?ml\b/i, label: '平台产物文件名' },
+];
 const failures = [];
 
 const skillDirectories = await directories(join(root, 'skills'));
@@ -31,6 +36,9 @@ for (const directory of skillDirectories) {
   }
   const pathMatch = forbiddenPath.exec(body);
   if (pathMatch) failures.push(`${relativePath}：不得固化 AIW 平台路径（${pathMatch[0].trim()}）`);
+  for (const { pattern, label } of forbiddenProtocolPatterns) {
+    if (pattern.test(body)) failures.push(`${relativePath}：不得复制 AIW ${label}，应服从运行时注入的产物协议`);
+  }
   if (name !== undefined && version !== undefined) skills.set(`${name}@${version}`, relativePath);
 }
 
@@ -42,6 +50,9 @@ for (const source of await directories(join(root, 'method-sources'))) {
       const { body } = splitFrontMatter(content, relativePath);
       const pathMatch = forbiddenPath.exec(body);
       if (pathMatch) failures.push(`${relativePath}：不得固化 AIW 平台路径（${pathMatch[0].trim()}）`);
+      for (const { pattern, label } of forbiddenProtocolPatterns) {
+        if (pattern.test(body)) failures.push(`${relativePath}：不得复制 AIW ${label}，应服从运行时注入的产物协议`);
+      }
     }
   }
 }
