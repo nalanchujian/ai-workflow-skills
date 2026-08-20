@@ -1,8 +1,8 @@
 ---
 name: typescript-web-implementation
-version: 5.0.1
+version: 0.0.1
 description: 在现有 TypeScript Web 项目中完成一个可独立审批的交付单元。
-aiwCompatibility: ">=4.0.0 <5.0.0"
+aiwCompatibility: ">=0.0.1 <1.0.0"
 artifactContract: aiw.task-output/v1
 phases: [implement]
 methodSources:

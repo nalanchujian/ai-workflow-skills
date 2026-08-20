@@ -1,8 +1,8 @@
 ---
 name: implementation-planning
-version: 8.0.1
+version: 0.0.1
 description: 将已确认方案分解为可独立交付、验证和审批的业务单元。
-aiwCompatibility: ">=4.0.0 <5.0.0"
+aiwCompatibility: ">=0.0.1 <1.0.0"
 artifactContract: aiw.task-output/v1
 phases: [plan]
 methodSources:

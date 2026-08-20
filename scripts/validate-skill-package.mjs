@@ -5,7 +5,7 @@ import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
-const requiredCompatibility = 'aiwCompatibility: ">=4.0.0 <5.0.0"';
+const requiredCompatibility = 'aiwCompatibility: ">=0.0.1 <1.0.0"';
 const requiredContract = 'artifactContract: aiw.task-output/v1';
 const forbiddenPath = /(?:^|[\s`])(?:\.aiw\/|artifacts\/|handoffs\/|runs\/)[^\s`)]*/m;
 const forbiddenProtocolPatterns = [

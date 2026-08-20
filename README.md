@@ -2,7 +2,7 @@
 
 `AI Workflow Skills` 是 [AI Workflow](https://www.npmjs.com/package/@nalanchujian/ai-workflow) 的公开团队技能仓库。
 
-它提供 `standard-web-feature@12.0.1`：面向 TypeScript Web 业务需求的交付单元模板。模板将 `clarify`、`solution`、`plan`、`implement` 四个可执行阶段锁定到明确的技能版本；`intake` 由 `aiw task init` 完成，不配置技能。计划获批后，AIW 会把每个业务单元生成独立的 `delivery-<unit-id>` 节点；每个节点在同一次运行中完成代码、工程验证、测试和所属验收项，不再汇总到全局 `verify`、`test` 节点。澄清阶段为每个 AC 固定证据类型；计划阶段绑定 AC、测试能力、测试目标与证据类型，且不能把 UI、API 或集成验收降级为单元测试；交付阶段只能执行批准计划。Codex 只声明业务证据，AIW 执行已批准测试并写入最终验收结论。AIW 是任务路径和产物 Schema 的唯一所有者：每次运行由程序根据 Zod Schema 生成字段说明与合法示例，再下发当前暂存输出回执。技能只描述方法、判断标准和质量要求，不得固化任务路径、平台文件名、字段白名单或完整 Schema，也不得自行生成测试结果。
+它提供 `standard-web-feature@0.0.1`：面向 TypeScript Web 业务需求的交付单元模板。模板将 `clarify`、`solution`、`plan`、`implement` 四个可执行阶段锁定到明确的技能版本；`intake` 由 `aiw task init` 完成，不配置技能。计划获批后，AIW 会把每个业务单元生成独立的 `delivery-<unit-id>` 节点；每个节点在同一次运行中完成代码、工程验证、测试和所属验收项，不再汇总到全局 `verify`、`test` 节点。澄清阶段为每个 AC 固定证据类型；计划阶段绑定 AC、测试能力、测试目标与证据类型，且不能把 UI、API 或集成验收降级为单元测试；交付阶段只能执行批准计划。Codex 只声明业务证据，AIW 执行已批准测试并写入最终验收结论。AIW 是任务路径和产物 Schema 的唯一所有者：每次运行由程序根据 Zod Schema 生成字段说明与合法示例，再下发当前暂存输出回执。技能只描述方法、判断标准和质量要求，不得固化任务路径、平台文件名、字段白名单或完整 Schema，也不得自行生成测试结果。
 
 ## 如何使用
 

@@ -1,8 +1,8 @@
 ---
 name: requirements-clarification
-version: 9.0.1
+version: 0.0.1
 description: 将来源资料整理为可审阅、可验证的结构化需求。
-aiwCompatibility: ">=4.0.0 <5.0.0"
+aiwCompatibility: ">=0.0.1 <1.0.0"
 artifactContract: aiw.task-output/v1
 phases: [clarify]
 methodSources:

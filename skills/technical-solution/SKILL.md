@@ -1,8 +1,8 @@
 ---
 name: technical-solution
-version: 3.1.0
+version: 0.0.1
 description: 基于已确认需求形成可审阅的技术方案与取舍。
-aiwCompatibility: ">=4.0.0 <5.0.0"
+aiwCompatibility: ">=0.0.1 <1.0.0"
 artifactContract: aiw.task-output/v1
 phases: [solution]
 methodSources:
