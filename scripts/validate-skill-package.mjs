@@ -31,7 +31,7 @@ for (const directory of skillDirectories) {
   if (version === undefined || !/^\d+\.\d+\.\d+$/.test(version)) failures.push(`${relativePath}：version 必须是 SemVer`);
   requireLine(frontMatter, requiredCompatibility, relativePath);
   requireLine(frontMatter, requiredContract, relativePath);
-  for (const heading of ['输入', '步骤', '验证']) {
+  for (const heading of ['输入', '步骤', '输出']) {
     if (!new RegExp(`^#{1,6}\\s+${heading}\\s*$`, 'm').test(body)) failures.push(`${relativePath}：缺少「${heading}」章节`);
   }
   const pathMatch = forbiddenPath.exec(body);
@@ -46,7 +46,8 @@ for (const source of await directories(join(root, 'method-sources'))) {
   for (const version of await directories(join(root, 'method-sources', source))) {
     for (const method of await directories(join(root, 'method-sources', source, version))) {
       const relativePath = `method-sources/${source}/${version}/${method}/SKILL.md`;
-      const content = await readFile(join(root, relativePath), 'utf8');
+      const content = await optionalReadFile(join(root, relativePath));
+      if (content === undefined) continue;
       const { body } = splitFrontMatter(content, relativePath);
       const pathMatch = forbiddenPath.exec(body);
       if (pathMatch) failures.push(`${relativePath}：不得固化 AIW 平台路径（${pathMatch[0].trim()}）`);
@@ -66,7 +67,7 @@ for (const directory of await directories(join(root, 'profiles'))) {
   if (profileName !== directory) failures.push(`${relativePath}：name 必须与目录名一致`);
   const profileVersion = valueOf(content, 'version');
   if (profileVersion === undefined || !/^\d+\.\d+\.\d+$/.test(profileVersion)) failures.push(`${relativePath}：version 必须是 SemVer`);
-  for (const match of content.matchAll(/^\s{2}(clarify|solution|plan|implement):\s*([^\s]+)\s*$/gm)) {
+  for (const match of content.matchAll(/^\s{2}(clarify|solution|plan|development):\s*([^\s]+)\s*$/gm)) {
     if (!skills.has(match[2])) failures.push(`${relativePath}：引用了不存在的技能 ${match[2]}`);
   }
 }

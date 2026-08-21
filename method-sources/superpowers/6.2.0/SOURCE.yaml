@@ -7,4 +7,3 @@ upstream:
 methods:
   - brainstorming
   - writing-plans
-  - test-driven-development
